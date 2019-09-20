@@ -1,0 +1,26 @@
+var convert = function(s, numRows) {
+    
+    if(numRows == 1){
+       return s;
+      }
+    
+    var index = 0 , rev = 1;
+    
+    var rows = Array(numRows).join("-").split("-");
+    
+    for(var i = 0 ; i < s.length ; i ++){
+        rows[index] += s[i];
+        index += rev;
+        if(index == 0 || index == numRows - 1){
+            rev *= -1;
+        }
+    }
+    
+    return rows.join("");
+};
+
+按照给定的行数，创建一个数组具有相应行的一围数组，然后按照列的顺序将字符串放进去。
+判断条件是当index=0以及index=newRows.length-1
+判断的结果就是将rev设置为+1还是-1来调整填充数组的顺序调整为是从下往上还是从上往下
+最后就是将数组按照每一行的顺序拼接成字符串并输出
+

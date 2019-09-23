@@ -1,0 +1,58 @@
+/**
+ * @param {string} str
+ * @return {number}
+ */
+var myAtoi = function(str) {
+    str = str.split("");
+    var result = "";
+    var len = str.length;
+    
+    if(isNaN(str[0]) || len == 0){
+            return 0;
+        }
+   for(var i = 0 ; i < len ; i ++){
+       
+    if(str[i] == ""){
+           break;
+       }
+       
+    else if(!isNaN(str[i]) && str[i] != "" || str[i] == "-"){
+           result += str[i];
+           }
+    }
+    
+    
+    if(result > 2147483647){
+        return 2147483647;
+    }
+    else if(result < -2147483648) {
+        return -2147483648;
+    }else{
+        return result;
+    }
+    
+};
+
+我怕不是个傻子吧，自己去重写一个paeseInt()方法
+js中明明就有psrseInt()方法呐
+
+var myAtoi = function(str) {
+   if(parseInt(str)){
+      str = parseInt(str);
+       
+    if(str > 2147483647){
+       return 2147483647;
+       }
+    else if(str < -2147483648){
+        return -2147483648;
+    }
+    else{
+        return str;
+    }
+         }
+    return 0;
+};
+
+然后就是parseInt()的使用
+还有32bit的范围表示
+

@@ -1,0 +1,16 @@
+var isPalindrome = function(x) {
+    if(x < 0) return false;
+    var newx , newx1;
+    newx = (x).toString().split("");
+    newx1 = newx.reverse().join("");
+    if(x == parseInt(newx1)){
+       return true;
+       }
+    return false;
+};
+
+首先需要注意的是 : 1、undefined和null没有toString()方法
+                 整数直接跟上.toString()形式，会报错，提示无效标记，因为整数后的点会被识别为小数点，数字在使用toString()方法时，加括号可解决
+                 对象Object类型及自定义对象类型加括号返回[object Object]
+                 2、函数的返回值必须有
+                 

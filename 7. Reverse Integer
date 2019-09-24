@@ -1,0 +1,28 @@
+var reverse = function(x) {
+
+     if(x<-2147483648||x>2147483647){
+        return 0;
+    }
+    var result = 0;
+    if(x < 0){
+        x = -x;
+        x = x .toString().split("").reverse().join("");
+        result = parseInt(x);
+        result *= (-1);
+       
+        
+    }else{
+         x = x .toString().split("").reverse().join("");
+         result = parseInt(x);
+        
+    }
+    
+     if(result<-2147483648||result>2147483647){
+        return 0;
+    }else{
+        return result;
+    }
+};
+
+这里我首先判断给定的x是否满足在给定的范围之内
+再则就是分类讨论，分正负讨论

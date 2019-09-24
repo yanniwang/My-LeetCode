@@ -1,0 +1,36 @@
+var intToRoman = function(num) {
+    var roman = [["" , "I" , "II" , "III" , "IV" , "V" , "VI" , "VII" , "VIII" , "IX"],
+                [ "" , "X" , "XX" , "XXX" , "XL" , "L" , "LX" , "LXX" , "LXXX" , "XC"],
+                [ "" , "C" , "CC" , "CCC" , "CD" , "D" , "DC" , "DCC" , "DCCC" , "CM"],
+                [ "" , "M" , "MM" , "MMM"]];
+    
+    return  roman[3][parseInt(num/1000)] + roman[2][parseInt((num%1000)/100)]
+            + roman[1][parseInt(((num%100)/10))] + roman[0][parseInt(num%10)]
+    
+};
+因为给的数的范围只在1~3999
+所以可以把所有的数都手动表示出来
+建立一个二维数组，将给定的数用数组中的数表示最后字符串相加即可
+
+
+
+
+
+
+var intToRoman = function(num) {
+    
+    var value = [1000 , 900 , 500 , 400 , 100 , 90 , 50 , 40 , 10 , 9 , 5 , 4 , 1];
+    var roman = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+    var Roman = '';
+    
+    for(var i = 0 ; num != 0 ; i ++){
+        while(num >= value[i]){
+            Roman += roman[i];
+            num = num - value[i];
+        }
+    }
+    return Roman;
+};
+这个方法是借鉴一个大佬写的进制，其实我觉得也和上面的把所有的列出来类似
+这个value中表示的数最大也是千，只是列出的数相对较少而已。
+而且还需要将，4，9，40，90，400，900这些容易表示出错的数列举出来

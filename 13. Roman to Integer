@@ -1,0 +1,39 @@
+var romanToInt = function(s) {
+    var result = 0;
+    var map = {
+        "I" : 1,
+        "V" : 5,
+        "X" : 10,
+        "L" : 50,
+        "C" : 100,
+        "D" : 500,
+        "M" : 1000
+    }
+
+    var array = s.split("");
+    
+    for(var i = 0 ; i < array.length -1 ; i ++){
+        
+      if(array[i + 1] && map[array[i]] < map[array[i + 1]]){
+          
+         result += 0 - map[array[i]] ;
+          
+          }
+        else{
+              result += map[array[i]];
+          }
+        
+       }
+        result += map[array[s.length - 1]] ;
+    
+        return result;
+      
+};
+
+
+
+1、将给定的s从第一个字符开始一个一个的和map中的数比较。
+2、存在一给问题是，若是需要左边的数比右边的小，则需要让result加上一个负的值
+3、其他的就正常叠加就行
+4、在循环数组时，边界只需要到s.length-1，若是到s.length的话，就会重复加上末尾的数
+5、因为在后面有个 result += map[array[s.length - 1]] ;

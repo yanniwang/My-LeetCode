@@ -20,3 +20,38 @@ var longestCommonPrefix = function(strs) {
 2、是先将strs[0]作为模板比较，若是遍历数组后面有和strs[0]不匹配的就将strs[0]缩短一个字符，也可以使用find()方法来判断一个字符串中是否有子字符串
 3、这个程序所耗时较长，所占的空间也比较大
 
+
+
+var longestCommonPrefix = function(strs) {
+    if(strs.length == 0){
+        return ""
+    }
+    
+    var result = '';
+    strs = strs.sort();
+    
+    var str1 = strs[0];
+    var str2 = strs[strs.length - 1];
+    
+    var len = Math.min(str1.length , str2.length);
+    
+    for(var i = 0 ; i < len ; i++){
+           
+           if(str1.charAt(i) != str2.charAt(i)){
+              break;
+    
+           }
+       }  
+     result = str2.slice(0 , i);
+     return result;
+};
+
+这个方法是借鉴了大佬的嘿嘿
+首先将数组进行了排序，然后再比较第一个和最后一个字符串就可以得到前缀
+字符串的排序是通过字符串UniCode码排序
+只能说666
+
+
+
+
+

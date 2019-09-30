@@ -36,6 +36,49 @@ var threeSum = function(nums) {
 这些个循环最后导致我严重超时，我改改
 
 
+var threeSum = function(nums) {
+    
+    var answer = [];
+    if(nums.length < 3) return answer;
+  
+    nums = nums.sort((a , b) => (a - b));
+    
+       for(let i=0; i<nums.length-2; i++){
+           var a = nums[i];
+           if(nums[i - 1] != undefined && nums[i] === nums[i - 1]) continue;
+           
+           let left = i + 1;
+           let right = nums.length - 1;
+           
+          while(left < right){
+              var b = nums[left];
+              var c = nums[right];
+              var sum = a + b + c;
+              
+              if(sum == 0){
+                  answer.push([a , b , c]);
+              while(nums[left] == nums[left + 1]){
+                  left ++;
+                 }
+              while(nums[right] == nums[right - 1]){
+                  right --;
+                 }
+              
+                  left ++;
+                  right --;
+            }else if(sum > 0){
+                  right --;
+              }else{
+                  left ++;
+              }   
+          }
+        }
+        return answer; 
+};
+
+
+这个是借鉴了别人写的，没有像之前写的那个是个炒鸡鸡肋又超时的办法
+
 
 
 

@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var threeSumClosest = function(nums, target) {
+    var closest = Math.abs(nums[0] + nums[1] + nums[2] - target);
+    var arr = [];
+    arr.push(nums[0]);
+    arr.push(nums[1]);
+    arr.push(nums[2]);
+    for(var i = 0 ; i < nums.length - 2 ; i ++){
+        for(var j = i + 1 ; j < nums.length - 1 ; j ++){
+            for(var k = j + 1 ; k < nums.length ; k ++){
+                 if(closest > Math.abs(nums[i] + nums[j] + nums[k] - target)){
+                     closest = Math.abs(nums[i] + nums[j] + nums[k] - target)
+                     arr.pop();
+                     arr.pop();
+                     arr.pop();
+                     arr.push(nums[i]);
+                     arr.push(nums[j]);
+                     arr.push(nums[k]);
+               }
+            }
+        }
+    }
+    return arr[0] + arr[1] + arr[2];
+};
+
+这个16题用的是笨办法，我去找找其他办法

@@ -28,3 +28,38 @@ var threeSumClosest = function(nums, target) {
 };
 
 这个16题用的是笨办法，我去找找其他办法
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var threeSumClosest = function(nums, target) {
+    var len = nums.length;
+    nums = nums.sort((a,b)=>a - b);
+    
+    var res = nums[len - 1] + nums[len - 2] + nums[len - 3]; //给最大的三个数的值
+    
+    for(var i = 0 ; i < nums.length - 2 ; i ++){
+        var left = i + 1 ; //从左边开始往右边走
+        var right = nums.length - 1; //从右边开始往左走
+        
+    while(left < right){
+        var sum = nums[i] + nums[left] + nums[right]; 
+        
+        if(sum < target) {
+            left ++;
+        }
+        else {
+            right--;
+             }
+        if(Math.abs(sum - target) < Math.abs(res - target)){
+            res = sum；
+        }
+    }
+   }
+    return res;
+};
+这个就是和前面一个target的方法类似
+首先先排序然后分别从左边和右边同时开始往中间寻找一个最靠近target的数组的和

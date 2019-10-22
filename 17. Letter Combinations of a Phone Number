@@ -1,0 +1,29 @@
+我自己没写出来，然后去蹭了一个整明白了，下次自己整一个出来，现去师傅那里偷看下，呵呵呵呵呵呵呵嗝~
+
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+
+var letterCombinations = function(digits) {
+    var table = ['' , '' , 'abc','def','ghi','jkl','mno','pqrs','tuv','wxyz'];
+    var list = [];
+    back(list,digits,'',0,table);
+    return list;
+};
+var back = function(list,digits,curr,index,table){
+    //结束条件
+    if(index === digits.length){
+        if(curr.length != 0){
+            list.push(curr);
+            return;
+        }
+    }
+    else{
+    var temp = table[parseInt(digits.charAt(index))];
+    for(var i = 0 ; i < temp.length ; i++){
+        var next = curr + temp.charAt(i);
+        back(list,digits,next,index + 1,table);
+    } 
+        }
+};

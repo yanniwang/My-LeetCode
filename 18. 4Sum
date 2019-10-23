@@ -40,3 +40,54 @@ var fourSum = function(nums, target) {
 };
 
 内个代码运行完说的是溢出内存，估计是溢出了给定的大小，我去找找其他的方法
+
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[][]}
+ */
+var fourSum = function(nums, target) {
+    var len = nums.length;
+    var result = [];
+    nums = nums.sort((a,b) => a - b);
+  
+    for(var i = 0 ; i < len -3 ; i ++){
+        for(var j = i + 1 ; j < len - 2 ; j ++){  
+            var left = j + 1; 
+            var right = len - 1;
+        
+        while(left < right){
+             var sum = nums[i] + nums[j] + nums[left] + nums[right];
+    
+             if(sum === target){
+                 result.push([nums[i],nums[j], nums[left] ,nums[right]]);
+                 left ++;
+                 right --;
+            }
+             else if(sum > target){
+                   right --;
+            }
+             else{
+                   left ++;
+            } 
+           }
+        }
+    }
+    
+    var res = [];
+    var hash = {};
+    result.forEach(item => {
+        if(!hash[item]){
+           res.push(item);
+            hash[item] = true;
+           }
+    })
+      return res;
+};
+
+
+这个是也是没写完，上面的我改好了，但是到最后的数组去重的问题我卡住了，嘻嘻去找的一个利用对象属性不能相同hash()解决了
+hash[item] = true;但是这个我不是很理解
+顺便还去了解了下数组去重的办法

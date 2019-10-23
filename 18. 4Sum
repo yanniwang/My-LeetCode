@@ -1,0 +1,42 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[][]}
+ */
+var fourSum = function(nums, target) {
+    nums = nums.sort((a,b) => a - b);
+    var result = [];
+    for(var i = 0 ; i < nums.length -3 ; i ++){
+        var start = nums[i];
+        target = target - nums[i];
+        for(var j = i + 1 ; j < nums.length - 2 ; j ++){
+            var left = j + 1; 
+            var right = nums.length - 1;
+            var a = nums[j];
+            var b = nums[left];
+            var c = nums[right];
+            var sum = a + b + c ;
+            
+        while(left < right){
+             if(nums[left] == nums[left + 1]){
+                left++;
+            }
+              if(nums[right] == nums[right - 1]){
+                right--;
+            }
+             if(sum == target){
+                    result.push([nums[i],a, b ,c]);
+               }
+                else if(sum > target){
+                   right --;
+                }
+                else{
+                   left ++;
+                } 
+           }
+        }
+    }
+      return result;
+};
+
+内个代码运行完说的是溢出内存，估计是溢出了给定的大小，我去找找其他的方法

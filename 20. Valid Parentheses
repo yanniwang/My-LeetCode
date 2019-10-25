@@ -1,0 +1,51 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    s = s.split('');
+    var len = s.length;
+    if(s == s.reverse());{
+        return true;
+    }
+    if(len % 2 == 1){
+        return false;
+    }
+    for(var i = 0 ; i < len - 1 ; i = i + 2){
+       if((s[i] == '(' && s[i + 1] == ')') ||
+         (s[i] == '{' && s[i + 1] == '}') ||
+         (s[i] == '[' && s[i + 1] == ']')) {
+          continue;
+          } else{
+              return false;
+          }
+     }  
+     return true;       
+};
+
+这个有点问题，就是在'(}'这个地方卡壳，就是不对，我明明在for循环的时候进行了判断，但是也欸用
+
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+     var rightSymbols = [];
+    for (var i = 0; i < s.length; i++) {
+        if(s[i] == "("){
+            rightSymbols.push(")");
+        }else if(s[i] == "{"){
+            rightSymbols.push("}");
+        }else if(s[i] == "["){
+            rightSymbols.push("]");
+        }else if(rightSymbols.pop() != s[i] ){
+            return false;
+        }
+    }
+    return !rightSymbols.length;
+};
+
+
+这个是我借鉴的利用栈解决的，想法很巧妙。若是左括号，就将对应的右括号压进result栈中，然后让不再是左括号了就将resuklt栈中的元素pop出来，然后与后面
+的比较

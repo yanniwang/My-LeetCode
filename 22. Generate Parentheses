@@ -1,0 +1,28 @@
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function(n) {
+    var result = [];
+    
+    function generate(l,r,s)
+    {
+        if(l == n && r == n)
+        {
+            result.push(s);
+            return;
+        }
+        if(l < n)
+        {
+            generate(l + 1, r,s+'(');
+        }
+        if(l > r)
+        {
+            generate(l,r + 1,s+')');
+        }
+}
+    generate(0 , 0 ,'');
+    return result;
+};
+这个题emmmm.....我不会，我之前借鉴了一个其他的但是老出错，我把通过的答案搁在这里，下次我自己写一下看看
+我再去试试上一个将递归函数放在外面的可不可以通过

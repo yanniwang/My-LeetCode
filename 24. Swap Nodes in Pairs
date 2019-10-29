@@ -1,0 +1,30 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var swapPairs = function(head) {
+    var fakeHead = new ListNode(-1); //新new的头节点指向head
+    fakeHead.next = head;
+    var cur = fakeHead;
+    var before = null;
+    var after = null;
+    while(cur.next != null && cur.next.next != null){
+        before = cur.next;
+        after = cur.next.next;
+        
+        before.next = after.next;
+        cur.next = after;
+        after.next = before;
+        cur = before;
+    }
+    return fakeHead.next;   
+};
+
+我发现好多关于链表的解题都是增加一个指向头节点的新节点

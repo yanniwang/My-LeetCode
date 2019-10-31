@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    var arr = [];
+    for(var i = 0 ; i < nums.length ; i++){
+        if(arr.indexOf(nums[i]) == -1){
+            arr.push(nums[i]);
+        }
+    }
+    return arr;
+};
+
+
+这个方法为啥不行呢
+我看了下都是用的是双指针，我试试昂

@@ -3,15 +3,16 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-    var arr = [];
-    for(var i = 0 ; i < nums.length ; i++){
-        if(arr.indexOf(nums[i]) == -1){
-            arr.push(nums[i]);
-        }
+    var i = 0;
+    for(var j = i+ 1 ; j < nums.length ; j++){
+           if(nums[i] != nums[j]){
+            i ++;
+               continue;
+           }else{
+               nums.splice(i,1);
+               i = j - 1;
+               j = i;
+           }  
     }
-    return arr;
+    return nums.length;
 };
-
-
-这个方法为啥不行呢
-我看了下都是用的是双指针，我试试昂

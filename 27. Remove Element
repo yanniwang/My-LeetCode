@@ -1,0 +1,35 @@
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function(nums, val) {
+    for(var i = 0 ; i < nums.length; i++){
+       if(nums[i] == val){
+          nums.splice(i , 1);
+           i --;
+       }
+    }
+    return nums.length;
+   
+};
+
+
+这个题目说不能再建一个数组，要在原数组上进行删除。
+
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function(nums, val) {
+    var res = [];
+    for(var i = 0 ; i < nums.length; i++){
+       if(nums[i] != val){
+           res.push(nums[i]);
+       }
+    }
+    return res.length;
+};
+这个我在webstorm上运行了是可以的。欸！
+

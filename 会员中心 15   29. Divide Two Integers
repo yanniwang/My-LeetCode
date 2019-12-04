@@ -1,0 +1,27 @@
+/**
+ * @param {number} dividend
+ * @param {number} divisor
+ * @return {number}
+ */
+var divide = function(dividend, divisor) {
+    if(divisor == 0) return 0;
+    if(divisor == 1) return dividend;
+   
+    var symbol;
+    if(dividend ^ divisor > 0) symbol = -1;
+    if(dividend ^ divisor < 0) symbol = 1;
+
+    dividend = Math.abs(dividend);
+    divisor = Math.abs(divisor);
+
+    for(var i = 31;i >= 0 ; i --){
+        var res = 0
+        if((dividend >> i) >= divisor) {
+            res += 1 << i;
+            dividend -= divisor << i;
+        }
+    }
+    return symbol > 0 ? res : -res;
+};
+
+这道题主要是运用了类似于十进制除法的二进制除法，这个代码没编过，但是我手算的结果是对的

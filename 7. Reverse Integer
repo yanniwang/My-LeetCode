@@ -9,12 +9,9 @@ var reverse = function(x) {
         x = x .toString().split("").reverse().join("");
         result = parseInt(x);
         result *= (-1);
-       
-        
     }else{
          x = x .toString().split("").reverse().join("");
-         result = parseInt(x);
-        
+         result = parseInt(x);  
     }
     
      if(result<-2147483648||result>2147483647){
@@ -26,3 +23,25 @@ var reverse = function(x) {
 
 这里我首先判断给定的x是否满足在给定的范围之内
 再则就是分类讨论，分正负讨论
+
+
+   var reverse = function(x) {  
+      let res = '';
+      let str = x+''
+      if(x>0){
+        for(var i = str.length-1;i>=0;i--){
+          res+=str[i]
+        }
+      }else{
+        for(var i = str.length-1;i>0;i--){
+          res = res+str[i]
+        }
+        res = -res    
+      }
+
+      if(res<Math.pow(-2,31)||res>=Math.pow(2,31)-1){
+        return 0
+      }
+      return res*1  
+};
+
